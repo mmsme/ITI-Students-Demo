@@ -1,0 +1,58 @@
+﻿@model ITI_Students_Demo.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <div>
+        <h4>Course</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseName)
+            </dd>
+        </dl>
+
+        <hr />
+
+        <table class="table table-bordered">
+            <tr class="thead-dark">
+                <th>Departmenst</th>
+            </tr>
+            @foreach (var item in ViewBag.depts)
+            {
+                <tr>
+                    <td>
+                        @item.DeptName
+                    </td>
+                </tr>
+            }
+        </table>
+        <hr />
+
+        <table class="table table-bordered">
+            <tr class="thead-dark">
+                <th>Students</th>
+                <th>Department</th>
+            </tr>
+            @foreach (var item in ViewBag.stds)
+            {
+                <tr>
+                    <td> @item.Name</td>
+                    <td> @item.Department.DeptName </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CourseId }, new { @class="btn btn-primary" }) 
+    @Html.ActionLink("Back to List", "Index", "Courses", new { @class = "btn btn-warning" })
+</p>

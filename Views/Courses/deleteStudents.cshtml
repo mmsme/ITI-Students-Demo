@@ -1,0 +1,25 @@
+﻿@model List<ITI_Students_Demo.Models.Student>
+@{
+    ViewBag.Title = "Delete Students";
+}
+
+<h2>Delete Students From @ViewBag.course.CourseName Course</h2>
+<form method="post">
+    <table class="table">
+        <tr class="thead-light">
+            <th>Student Name</th>
+            <th>Department Name</th>
+            <th>Add</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Department.DeptName</td>
+                <td>@Html.CheckBox("stds." + item.Id.ToString())</td>
+            </tr>
+        }
+    </table>
+    <input type="submit" class="btn btn-danger" value="Remove" />
+    @Html.ActionLink("Back to List", "index", "Courses", new { id = ViewBag.dept }, new { @class = "btn btn-warning" })
+</form>

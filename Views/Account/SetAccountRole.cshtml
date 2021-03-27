@@ -1,0 +1,38 @@
+﻿@model List<ITI_Students_Demo.Models.ApplicationUser>
+@{
+    ViewBag.Title = "SetAccountRole";
+}
+
+<h2>SetAccountRole</h2>
+
+<form method="post">
+    <div class="form-group">
+        <h6>Account Role</h6>
+        <div class="col-md-10">
+            @Html.DropDownList("RoleId", null, htmlAttributes: new { @class = "form-control", Required = "true" })
+        </div>
+    </div>
+    <hr />
+    <div>
+
+        <table class="table">
+            <tr class="thead-light">
+                <th>Name</th>
+                <th>Username</th>
+                <th>Add</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Fname @item.Lname</td>
+                    <td>@item.Email</td>
+                    <td>@Html.CheckBox("users." + item.Id.ToString())</td>
+                </tr>
+            }
+        </table>
+        <input type="submit" class="btn btn-success" value="Add" />
+        @Html.ActionLink("Back to List", "manageCourse", "Departments", new { id = ViewBag.dept }, new { @class = "btn btn-danger" })
+
+    </div>
+
+</form>

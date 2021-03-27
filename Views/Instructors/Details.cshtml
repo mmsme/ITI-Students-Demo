@@ -1,0 +1,48 @@
+﻿@model ITI_Students_Demo.Models.Instructor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+    <div class="text-center m-3">
+        <h2>Details</h2>
+        <h4>Instructor</h4>
+    </div>
+    <div>
+        <div class="text-center">
+            <div class="d-flex justify-content-center">
+                <img src="~/Imgs/noone.png" class="img-fluid img-thumbnail" width="400" height="400"
+                     alt="" srcset="">
+            </div>
+            <p class="h2 m-5">  @Html.DisplayFor(model => model.name)</p>
+        </div>
+
+        <div>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <td>
+                            Name
+                        </td>
+                        <td>
+                            Department Name
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> @Html.DisplayFor(model => model.name)</td>
+                        <td>  @Html.DisplayFor(model => model.Department.DeptName)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class="btn btn-primary" }) 
+    @Html.ActionLink("Back to List", "Index", "Instructors", new { @class = "btn btn-warning" })
+</p>
